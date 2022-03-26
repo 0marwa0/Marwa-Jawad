@@ -1,0 +1,95 @@
+.cards-holder {
+  display: grid;
+  place-content: center;
+  gap: 4%;
+  margin-top: 25px;
+  grid-template-columns: repeat(3, auto);
+}
+.product-title {
+  padding: 30px 0;
+  font-family: Raleway;
+  font-weight: 300;
+}
+.product-page {
+  display: flex;
+  gap: 100px;
+}
+.product-gallery {
+  flex: 65%;
+  gap: 40px;
+  display: flex;
+  height: 100%;
+}
+
+.product-images div {
+  width: 96px;
+  height: 87px;
+
+  margin-bottom: 10px;
+}
+.main-image {
+  height: 540px;
+  /* width: 100%; */
+}
+.product {
+  flex: 35%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-size-lg {
+  width: 63px;
+  height: 45px;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.product-text,
+.product-color {
+  min-width: 30px;
+  max-width: max-content;
+  height: 20px;
+  border-radius: 15px;
+  border: none;
+  padding: 2px 5px;
+  margin-top: 4px;
+  display: grid;
+  place-items: center;
+}
+.product-text {
+  background: rgb(243, 243, 243) !important;
+}
+
+.product-description {
+  margin-top: 10px;
+  width: 300px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.Attribute-holder {
+  font-weight: bold;
+  margin: 10px 0;
+}
+.Attribute-holder p {
+  margin-bottom: 15px;
+}
+.AddToCart {
+  font-size: 16px;
+  background-color: #5ece7b;
+  color: white;
+  font-weight: 400;
+  border: none;
+  height: 52px;
+  width: 292px;
+  left: 929px;
+  top: 478px;
+  cursor: pointer;
+  padding: 16px, 32px;
+}

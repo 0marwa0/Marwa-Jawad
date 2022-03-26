@@ -1,0 +1,11 @@
+.pagination-btn,
+.pagination-btn-active {
+  border: none;
+  padding: 6px 5px;
+  border-radius: 4px;
+  background-color: rgb(231, 231, 231);
+}
+.pagination-btn-active {
+  background-color: #5ece7b;
+  cursor: pointer;
+}

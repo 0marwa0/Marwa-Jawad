@@ -1,0 +1,36 @@
+.navbar-holder {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  padding: 30px 0;
+  height: 30px;
+  justify-content: space-between;
+}
+.tabs {
+  font-size: 23px;
+  text-transform: uppercase;
+}
+.tabs span {
+  padding: 20px 10px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.activeTab {
+  color: #5ece7b;
+  border-bottom: 2px solid #5ece7b;
+}
+.cart {
+  position: relative;
+}
+.cart-num {
+  width: 25px;
+  position: absolute;
+  height: 25px;
+  background: #1d1f22;
+  border-radius: 50%;
+  display: flex;
+  color: white;
+  align-items: center;
+  top: -50%;
+  left: 70%;
+  justify-content: center;
+}

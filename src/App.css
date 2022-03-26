@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+}
+.text {
+  margin-top: 6px;
+}
+.selected-item {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border: 4px solid #defde6;
+}
+.app-container {
+  margin: 0 50px;
+}
+.flex {
+  display: flex;
+  gap: 20px;
+}
+.card-link {
+  text-decoration: none;
+  color: unset;
+  cursor: default;
+}
+.center {
+  display: grid;
+  place-items: center;
+}

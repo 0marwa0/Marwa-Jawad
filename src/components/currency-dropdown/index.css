@@ -1,0 +1,40 @@
+.select-box--container {
+  height: 20px;
+  padding-top: 5px;
+}
+
+.select-box--box {
+  width: 50px;
+}
+
+.select-box--selected-item {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  padding: 4px 12px;
+  vertical-align: middle;
+}
+.select-box--items {
+  margin-top: 10px;
+  width: max-content;
+  padding: 13px;
+
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  position: relative;
+  background-color: white;
+}
+.select-box--items div {
+  padding: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.select-box--arrow {
+  width: 40px;
+  cursor: pointer;
+  display: grid;
+  height: max-content;
+  gap: 1px;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
