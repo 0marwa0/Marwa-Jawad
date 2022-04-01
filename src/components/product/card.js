@@ -6,7 +6,7 @@ import { getPrice } from '../../UtilityFunctions'
 import LazyLoading from '../LazyLoading'
 class index extends React.Component {
   render() {
-    const { name, gallery, prices, id } = this.props.product
+    const { brand, name, gallery, prices, id } = this.props.product
     const currency = this.props.selectedCurrency
     const price = currency + ' ' + getPrice(prices, currency)
     return (
@@ -25,7 +25,9 @@ class index extends React.Component {
             <img src={cartIcon} alt="0" height="22px" />
           </div>
         </div>
-        <p className="text">{name}</p>
+        <p className="text">
+          {brand} {name}
+        </p>
         <div className="bold-text">{price}</div>
       </div>
     )
