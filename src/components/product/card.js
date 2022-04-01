@@ -10,16 +10,17 @@ class index extends React.Component {
     const currency = this.props.selectedCurrency
     const price = currency + ' ' + getPrice(prices, currency)
     return (
-      <div className="card-holder" key={id}>
+      <div
+        className="card-holder"
+        key={id}
+        onClick={() => {
+          this.props.history(`/product/${id}`)
+        }}
+      >
         <div className="card-image">
           <LazyLoading src={gallery[0]} item={this.props.product} />
         </div>
-        <div
-          className="icon-cart-holder"
-          onClick={() => {
-            this.props.history(`/product/${id}`)
-          }}
-        >
+        <div className="icon-cart-holder">
           <div className="icon-cart">
             <img src={cartIcon} alt="0" height="22px" />
           </div>
