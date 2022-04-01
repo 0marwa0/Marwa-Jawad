@@ -1,8 +1,8 @@
-import React from "react";
-import LazyLoading from "../LazyLoading";
+import React from 'react'
+import LazyLoading from '../LazyLoading'
 class index extends React.Component {
   render() {
-    let gallery = this.props.gallery;
+    const gallery = this.props.gallery
     return (
       <div className="product-gallery">
         <div className="product-images">
@@ -17,8 +17,8 @@ class index extends React.Component {
           <LazyLoading src={gallery?.[0]} item={this.props.item} />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default index;
+export default index
