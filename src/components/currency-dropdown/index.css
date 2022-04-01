@@ -17,11 +17,22 @@
 .select-box--items {
   margin-top: 10px;
   width: max-content;
-  padding: 13px;
 
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
   position: relative;
   background-color: white;
+}
+.select-box--items > div {
+  padding: 13px;
+  border: 1px solid transparent;
+}
+.select-box--items .selected-drop-item {
+  background-color: rgb(246, 246, 246);
+  border-bottom: 1px solid rgb(186, 248, 186);
+}
+.select-box--items > div:hover {
+  background-color: rgb(246, 246, 246);
+  border-bottom: 1px solid rgb(186, 248, 186);
 }
 .select-box--items div {
   padding: 6px;

@@ -46,7 +46,15 @@ class DropDown extends React.Component {
             className={'select-box--items'}
           >
             {this.props.currencies.currencies.map((item) => (
-              <div key={item.id} onClick={() => this.selectItem(item.symbol)}>
+              <div
+                className={
+                  this.state.selectedCurrency === item.symbol
+                    ? 'selected-drop-item'
+                    : ''
+                }
+                key={item.id}
+                onClick={() => this.selectItem(item.symbol)}
+              >
                 {item.symbol} {item.label}
               </div>
             ))}
@@ -60,6 +68,7 @@ class DropDown extends React.Component {
 const state = function (state) {
   return {
     currencies: state.currencies,
+
     dropdown: state.dropdown,
   }
 }
