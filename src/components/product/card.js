@@ -7,7 +7,7 @@ import LazyLoading from '../LazyLoading'
 class index extends React.Component {
   render() {
     const { brand, name, gallery, prices, id } = this.props.product
-    const currency = this.props.selectedCurrency
+    let currency = this.props.selectedCurrency
     const price = currency + ' ' + getPrice(prices, currency)
     return (
       <div
