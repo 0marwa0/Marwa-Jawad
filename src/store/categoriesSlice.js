@@ -10,6 +10,7 @@ const query = `
       name
       brand
       gallery
+      inStock
       prices{
         currency{
           symbol

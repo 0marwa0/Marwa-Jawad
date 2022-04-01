@@ -4,10 +4,12 @@ import cartIcon from '../../assets/Icons/cartIcon.svg'
 import Hoc from '../Hoc'
 import { getPrice } from '../../UtilityFunctions'
 import LazyLoading from '../LazyLoading'
+
 class index extends React.Component {
   render() {
-    const { brand, name, gallery, prices, id } = this.props.product
+    const { brand, name, gallery, prices, id, inStock } = this.props.product
     const currency = this.props.selectedCurrency
+    const label = inStock ? undefined : 'OUT OF STOCK'
     const price = currency + ' ' + getPrice(prices, currency)
     return (
       <div
@@ -18,9 +20,17 @@ class index extends React.Component {
         }}
       >
         <div className="card-image">
-          <LazyLoading src={gallery[0]} item={this.props.product} />
+          <LazyLoading
+            src={gallery[0]}
+            item={this.props.product}
+            label={label}
+          />
         </div>
-        <div className="icon-cart-holder">
+        <div
+          className={
+            inStock ? 'icon-cart-holder' : 'icon-cart-holder hidePointer'
+          }
+        >
           <div className="icon-cart">
             <img src={cartIcon} alt="0" height="22px" />
           </div>

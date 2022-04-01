@@ -46,5 +46,5 @@
   justify-content: center;
   right: 30px;
   top: -20px;
-  z-index: 1;
+  z-index: 9999;
 }

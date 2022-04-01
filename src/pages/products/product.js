@@ -41,7 +41,7 @@ class ProductInfo extends React.Component {
 
   addItem = (item) => {
     let attributes = this.state.attributes
-
+    const inStock = item.inStock
     // check if the user didn't pick any attributes
     if (attributes.length === 0) {
       attributes = item.attributes
@@ -51,13 +51,16 @@ class ProductInfo extends React.Component {
       count: 1,
       attributes,
     }
-    this.props.addProduct(product)
-    this.setState({ attributes: [] })
+
+    if (inStock) {
+      this.props.addProduct(product)
+      this.setState({ attributes: [] })
+    }
   }
 
   render() {
     const products = this.props.products
-    const { id, brand, name, gallery, prices, description } = products
+    const { id, brand, name, gallery, prices, description, inStock } = products
     const inCart = this.props.cart?.some((item) => item.id === id)
     // check if the item is already added to the cart
     // so we can show the item from the cart
@@ -67,13 +70,14 @@ class ProductInfo extends React.Component {
       ? { ...this.props.products, attributes: this.state.attributes }
       : this.props.products
     const price = getPrice(prices, this.props.selectedCurrency)
-
+    const label = inStock ? undefined : 'out-of-stock'
     return (
       <div className="product-page">
         <ProductGallery gallery={gallery} />
         <div className="product">
           <h1>{brand}</h1>
           <h1>{name}</h1>
+          <p>{label}</p>
           <Attributes
             updateAttributes={this.updateAttributes}
             product={product}

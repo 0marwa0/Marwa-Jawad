@@ -10,7 +10,8 @@ const query = `
       name  
       brand
       gallery
-       description
+      description
+      inStock
       attributes{
         type
         name

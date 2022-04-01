@@ -52,7 +52,7 @@ class DropDown extends React.Component {
                     ? 'selected-drop-item'
                     : ''
                 }
-                key={item.id}
+                key={item.symbol}
                 onClick={() => this.selectItem(item.symbol)}
               >
                 {item.symbol} {item.label}

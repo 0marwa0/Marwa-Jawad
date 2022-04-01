@@ -1,4 +1,5 @@
 import React from 'react'
+import './index.css'
 class index extends React.Component {
   state = { loading: true, item: this.props.item }
 
@@ -8,6 +9,7 @@ class index extends React.Component {
         loading: true,
       }
     }
+    return {}
   }
 
   render() {
@@ -15,17 +17,19 @@ class index extends React.Component {
     const src = loading
       ? require('../../assets/Icons/Loading.gif')
       : this.props.src
-
+    const label = this.props.label
     return (
-      <div>
+      <div style={{ position: 'relative' }}>
         <img
           src={src}
           alt=""
           width="100%"
           height="100%"
+          style={{ zIndex: 999999 }}
           onLoadedDataCapture={() => this.setState({ loading: true })}
           onLoad={() => this.setState({ loading: false })}
         />
+        {label ? <div className="inStock">{label}</div> : null}
       </div>
     )
   }

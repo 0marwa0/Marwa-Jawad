@@ -32,6 +32,7 @@ class Products extends React.Component {
     if (nextProps.products !== prevState.products) {
       return { currentPage: 1 }
     }
+    return {}
   }
 
   render() {
