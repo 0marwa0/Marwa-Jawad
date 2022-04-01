@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import productSlice from "./productSlice";
-import currencySlice from "./currencySlice";
-import cartSlice from "./cartSlice";
-import categoriesSlice from "./categoriesSlice";
-import modalSlice from "./modalSlice";
-import dropdownSlice from "./dropdownSlice";
+import { configureStore } from '@reduxjs/toolkit'
+import productSlice from './productSlice'
+import currencySlice from './currencySlice'
+import cartSlice from './cartSlice'
+import categoriesSlice from './categoriesSlice'
+import modalSlice from './modalSlice'
+import dropdownSlice from './dropdownSlice'
 const store = configureStore({
   reducer: {
     products: productSlice,
@@ -14,5 +14,5 @@ const store = configureStore({
     modal: modalSlice,
     dropdown: dropdownSlice,
   },
-});
-export default store;
+})
+export default store

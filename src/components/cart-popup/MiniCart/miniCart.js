@@ -1,48 +1,54 @@
-import React from "react";
-import "./cart.css";
-import { connect } from "react-redux";
-import Pagination from "../../..//components/pagination";
-import EmptyCart from "../../../assets/Icons/empty_cart.gif";
-import CartItem from "./miniCartItem";
-import CartControl from "./miniCartControl";
-import { totalPrice } from "../../../UtilityFunctions";
-import { closeDropdown } from "../../../store/dropdownSlice";
+import React from 'react'
+import './cart.css'
+import { connect } from 'react-redux'
+import Pagination from '../../..//components/pagination'
+import EmptyCart from '../../../assets/Icons/empty_cart.gif'
+import CartItem from './miniCartItem'
+import CartControl from './miniCartControl'
+import { totalPrice } from '../../../UtilityFunctions'
+import { closeDropdown } from '../../../store/dropdownSlice'
+import PropTypes from 'prop-types'
 class MiniCart extends React.Component {
-  state = { currentPage: 1, perPage: 2 };
+  state = { currentPage: 1, perPage: 2 }
+  static prototypes = {
+    showMiniCart: PropTypes.func.isRequired,
+    cart: PropTypes.array.isRequired,
+  }
+
   nextPage = () => {
-    const totalPage = Math.round(this.props.cart.length / this.state.perPage);
+    const totalPage = Math.round(this.props.cart.length / this.state.perPage)
     if (totalPage !== this.state.currentPage) {
-      console.log(totalPage, this.state.currentPage);
+      console.log(totalPage, this.state.currentPage)
       this.setState(() => ({
         currentPage: this.state.currentPage + 1,
-      }));
+      }))
     }
-  };
+  }
 
   prevPage = () => {
     if (this.state.currentPage > 1)
       this.setState(() => ({
         currentPage: this.state.currentPage - 1,
-      }));
-  };
+      }))
+  }
 
   render() {
-    let items = this.props.cart ? this.props.cart : [];
-    let currency = this.props.selectedCurrency;
-    let lastIndex = this.state.currentPage * this.state.perPage;
-    let firstIndex = lastIndex - this.state.perPage;
-    let products = items.slice(firstIndex, lastIndex);
-    let totalPages = Math.ceil(this.props.cart?.length / this.state.perPage);
-    let totalCost = currency + " " + totalPrice(items, currency);
+    const items = this.props.cart ? this.props.cart : []
+    const currency = this.props.selectedCurrency
+    const lastIndex = this.state.currentPage * this.state.perPage
+    const firstIndex = lastIndex - this.state.perPage
+    const products = items.slice(firstIndex, lastIndex)
+    const totalPages = Math.ceil(this.props.cart?.length / this.state.perPage)
+    const totalCost = currency + ' ' + totalPrice(items, currency)
 
     return (
       <>
         <div
           className="mini-cart"
           onClick={(e) => {
-            e.stopPropagation();
-            this.props.showMiniCart();
-            this.props.hideDropDown();
+            e.stopPropagation()
+            this.props.showMiniCart()
+            this.props.hideDropDown()
           }}
         >
           <span>
@@ -53,7 +59,7 @@ class MiniCart extends React.Component {
             products ? (
               products.map((item) => <CartItem data={item} key={item.id} />)
             ) : (
-              ""
+              ''
             )
           ) : (
             <div className="center">
@@ -75,11 +81,11 @@ class MiniCart extends React.Component {
             />
           </div>
         ) : (
-          ""
+          ''
         )}
         <CartControl items={items} closeModal={this.props.closeModal} />
       </>
-    );
+    )
   }
 }
 const state = (state) => {
@@ -87,11 +93,12 @@ const state = (state) => {
     selectedCurrency: state.currencies?.selectedCurrency,
     cart: state.cart.cart?.items,
     test: state.cart,
-  };
-};
+  }
+}
 const dispatch = (dispatch) => {
   return {
     hideDropDown: dispatch(closeDropdown()),
-  };
-};
-export default connect(state, dispatch)(MiniCart);
+  }
+}
+
+export default connect(state, dispatch)(MiniCart)

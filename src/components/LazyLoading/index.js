@@ -1,16 +1,20 @@
-import React from "react";
+import React from 'react'
 class index extends React.Component {
-  state = { loading: true };
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.item?.id !== this.props.item?.id) {
-      this.setState({ loading: true });
+  state = { loading: true, item: this.props.item }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.item?.id !== prevState.item?.id) {
+      return {
+        loading: true,
+      }
     }
   }
+
   render() {
-    let loading = this.state.loading;
-    let src = loading
-      ? require("../../assets/Icons/Loading.gif")
-      : this.props.src;
+    const loading = this.state.loading
+    const src = loading
+      ? require('../../assets/Icons/Loading.gif')
+      : this.props.src
 
     return (
       <div>
@@ -23,8 +27,8 @@ class index extends React.Component {
           onLoad={() => this.setState({ loading: false })}
         />
       </div>
-    );
+    )
   }
 }
 
-export default index;
+export default index

@@ -1,14 +1,14 @@
-import React from "react";
-import CartAttribute from "./miniCartAttribute";
-import { getPrice } from "../../../UtilityFunctions";
-import { connect } from "react-redux";
-import CartItemControl from "./miniCartItemControl";
-import "./cart.css";
+import React from 'react'
+import CartAttribute from './miniCartAttribute'
+import { getPrice } from '../../../UtilityFunctions'
+import { connect } from 'react-redux'
+import CartItemControl from './miniCartItemControl'
+import './cart.css'
 class CartControl extends React.Component {
   render() {
-    let { brand, name, attributes, prices, id } = this.props.data;
-    let currency = this.props.currentCurrency;
-    let price = currency + " " + getPrice(prices, currency);
+    const { brand, name, attributes, prices, id } = this.props.data
+    const currency = this.props.currentCurrency
+    const price = currency + ' ' + getPrice(prices, currency)
 
     return (
       <div className="item-info-cart">
@@ -21,11 +21,11 @@ class CartControl extends React.Component {
         </div>
         <CartItemControl item={this.props.data} id={id} />
       </div>
-    );
+    )
   }
 }
 const state = (state) => {
-  return { currentCurrency: state.currencies.selectedCurrency };
-};
+  return { currentCurrency: state.currencies.selectedCurrency }
+}
 
-export default connect(state)(CartControl);
+export default connect(state)(CartControl)

@@ -1,9 +1,9 @@
-import React from "react";
-import Products from "./pages/products";
-import Product from "./pages/products/product";
-import { Routes, Route } from "react-router-dom";
-import Cart from "./pages/cart";
-import AppWrapper from "./app-wrapper";
+import React from 'react'
+import Products from './pages/products'
+import Product from './pages/products/product'
+import { Routes, Route } from 'react-router-dom'
+import Cart from './pages/cart'
+import AppWrapper from './app-wrapper'
 class App extends React.Component {
   render() {
     return (
@@ -14,8 +14,8 @@ class App extends React.Component {
           <Route path="/product/:id" element={<Product />} exact />
         </Routes>
       </AppWrapper>
-    );
+    )
   }
 }
 
-export default App;
+export default App

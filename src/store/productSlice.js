@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import axios from 'axios'
 const query = `
 {
   category{
@@ -29,35 +29,35 @@ const query = `
   }
 }
 
-`;
+`
 export const fetchProduct = createAsyncThunk(
-  "productStore/fetchProdcut",
+  'productStore/fetchProdcut',
   async (id) => {
     return await axios
-      .post("http://localhost:4000/", { query: query })
+      .post('http://localhost:4000/', { query: query })
       .then(
         (res) =>
           res.data.data.category.products.filter((item) => item.id === id)[0]
-      );
+      )
   }
-);
+)
 const productSlice = createSlice({
-  name: "products",
+  name: 'products',
   initialState: {
     product: {},
   },
 
   extraReducers: {
     [fetchProduct.fulfilled](state, action) {
-      let attributes = action.payload.attributes.map((product) => ({
+      const attributes = action.payload.attributes.map((product) => ({
         ...product,
         selected: product.items[0].value,
-      }));
-      let product = { ...action.payload, attributes };
+      }))
+      const product = { ...action.payload, attributes }
 
-      state.product = product;
+      state.product = product
     },
   },
-});
-export const { getProductById } = productSlice.actions;
-export default productSlice.reducer;
+})
+export const { getProductById } = productSlice.actions
+export default productSlice.reducer

@@ -1,18 +1,18 @@
-import React from "react";
-import "./index.css";
-import { connect } from "react-redux";
+import React from 'react'
+import './index.css'
+import { connect } from 'react-redux'
 import {
   addProduct,
   decrease,
   increase,
   removeProduct,
-} from "../../store/cartSlice";
-import CartItem from "./cartItem";
-import ItemControl from "./itemControl";
+} from '../../store/cartSlice'
+import CartItem from './cartItem'
+import ItemControl from './itemControl'
 
 class Cart extends React.Component {
   render() {
-    let currency = this.props.selectedCurrency;
+    const currency = this.props.selectedCurrency
 
     return (
       <>
@@ -30,15 +30,15 @@ class Cart extends React.Component {
           ))}
         </div>
       </>
-    );
+    )
   }
 }
 const data = (state) => {
   return {
     cart: state.cart.cart?.items,
     selectedCurrency: state.currencies.selectedCurrency,
-  };
-};
+  }
+}
 
 const dispatch = (dispatch) => {
   return {
@@ -46,7 +46,7 @@ const dispatch = (dispatch) => {
     deleteItem: (id) => dispatch(removeProduct(id)),
     increase: (id) => dispatch(increase(id)),
     decrease: (id) => dispatch(decrease(id)),
-  };
-};
+  }
+}
 
-export default connect(data, dispatch)(Cart);
+export default connect(data, dispatch)(Cart)

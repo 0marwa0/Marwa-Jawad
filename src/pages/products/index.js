@@ -6,11 +6,12 @@ import ProductCard from '../../components/product/card'
 import Pagination from '../../components/pagination'
 import './index.css'
 class Products extends React.Component {
-  state = { currentPage: 1, perPage: 6 }
+  state = { currentPage: 1, perPage: 6, products: this.props.products }
   componentDidMount() {
     this.props.getCategories()
     this.props.getCurrency()
   }
+
   nextPage = () => {
     const totalPage = Math.ceil(this.props.products.length / this.state.perPage)
     if (totalPage !== this.state.currentPage) {
@@ -26,17 +27,19 @@ class Products extends React.Component {
         currentPage: this.state.currentPage - 1,
       }))
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.products !== this.props.products) {
-      this.setState({ currentPage: 1 })
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.products !== prevState.products) {
+      return { currentPage: 1 }
     }
   }
+
   render() {
     let products = this.props.products || []
-    let lastIndex = this.state.currentPage * this.state.perPage
-    let firstIndex = lastIndex - this.state.perPage
+    const lastIndex = this.state.currentPage * this.state.perPage
+    const firstIndex = lastIndex - this.state.perPage
     products = products?.slice(firstIndex, lastIndex)
-    let total = Math.ceil(this.props.products?.length / this.state.perPage)
+    const total = Math.ceil(this.props.products?.length / this.state.perPage)
     return (
       <div>
         <h1 className="product-title">Category Name </h1>

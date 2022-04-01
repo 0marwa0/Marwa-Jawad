@@ -1,5 +1,5 @@
-import React from "react";
-import Hoc from "../../Hoc";
+import React from 'react'
+import Hoc from '../../Hoc'
 class index extends React.Component {
   render() {
     return (
@@ -8,9 +8,9 @@ class index extends React.Component {
           <span
             className="cart-btn cart-btn-view"
             onClick={(e) => {
-              e.stopPropagation();
-              this.props.closeModal();
-              this.props.history("/cart");
+              e.stopPropagation()
+              this.props.closeModal()
+              this.props.history('/cart')
             }}
           >
             VIEW BAG
@@ -19,8 +19,8 @@ class index extends React.Component {
 
         <span className="cart-btn cart-btn-check-out">CHECK OUT</span>
       </span>
-    );
+    )
   }
 }
 
-export default Hoc(index);
+export default Hoc(index)

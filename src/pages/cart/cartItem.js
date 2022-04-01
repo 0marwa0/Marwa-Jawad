@@ -1,13 +1,14 @@
-import React from "react";
-import { getPrice } from "../../UtilityFunctions";
-import { removeProduct } from "../../store/cartSlice";
-import { connect } from "react-redux";
-import TrashIcon from "../../assets/Icons/trash-icon.png";
+import React from 'react'
+import { getPrice } from '../../UtilityFunctions'
+import { removeProduct } from '../../store/cartSlice'
+import { connect } from 'react-redux'
+import TrashIcon from '../../assets/Icons/trash-icon.png'
+
 class index extends React.Component {
   render() {
-    let { name, brand, attributes, prices, id } = this.props.item;
-    let currency = this.props.currency;
-    let price = currency + " " + getPrice(prices, currency);
+    const { name, brand, attributes, prices, id } = this.props.item
+    const currency = this.props.currency
+    const price = currency + ' ' + getPrice(prices, currency)
     return (
       <>
         <div className="item-cart-info">
@@ -31,14 +32,14 @@ class index extends React.Component {
                     key={value.value}
                     className={
                       value.value === item.selected
-                        ? "box-selected selected-item"
-                        : "box-container"
+                        ? 'box-selected selected-item'
+                        : 'box-container'
                     }
                     style={{
-                      background: item.type === "swatch" ? value.value : "",
+                      background: item.type === 'swatch' ? value.value : '',
                     }}
                   >
-                    {item.type === "text" ? value.value : ""}
+                    {item.type === 'text' ? value.value : ''}
                   </div>
                 ))}
               </div>
@@ -46,12 +47,12 @@ class index extends React.Component {
           ))}
         </div>
       </>
-    );
+    )
   }
 }
 const dispatch = (dispatch) => {
   return {
     removeItem: (id) => dispatch(removeProduct(id)),
-  };
-};
-export default connect(null, dispatch)(index);
+  }
+}
+export default connect(null, dispatch)(index)

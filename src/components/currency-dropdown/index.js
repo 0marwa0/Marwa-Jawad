@@ -1,28 +1,30 @@
-import React from "react";
-import { connect } from "react-redux";
-import { fetchCurrency, setCurrency } from "../../store/currencySlice";
-import dropIcon from "../../assets/Icons/dropIcon.svg";
-import "./index.css";
-import { showDropdown, closeDropdown } from "../../store/dropdownSlice";
-import { closeModal } from "../../store/modalSlice";
+import React from 'react'
+import { connect } from 'react-redux'
+import { fetchCurrency, setCurrency } from '../../store/currencySlice'
+import dropIcon from '../../assets/Icons/dropIcon.svg'
+import './index.css'
+import { showDropdown, closeDropdown } from '../../store/dropdownSlice'
+import { closeModal } from '../../store/modalSlice'
 class DropDown extends React.Component {
   state = {
     selectedCurrency: this.props.currencies.selectedCurrency,
     currencies: this.props.currencies,
     items: this.props.currencies.currencies,
-  };
+  }
 
   selectItem = (item) => {
-    this.props.changeCurrency(item);
+    this.props.changeCurrency(item)
     this.setState({
       showItems: false,
       selectedCurrency: item,
-    });
-    this.props.getCurrencies();
-  };
-  componentDidMount() {
-    this.props.getCurrencies();
+    })
+    this.props.getCurrencies()
   }
+
+  componentDidMount() {
+    this.props.getCurrencies()
+  }
+
   render() {
     return (
       <div className="select-box--box">
@@ -30,18 +32,18 @@ class DropDown extends React.Component {
           <div
             className="select-box--arrow"
             onClick={(e) => {
-              e.stopPropagation();
-              this.props.showDropdown();
-              this.props.hideModal();
+              e.stopPropagation()
+              this.props.showDropdown()
+              this.props.hideModal()
             }}
           >
-            {this.state.selectedCurrency}{" "}
+            {this.state.selectedCurrency}{' '}
             <img src={dropIcon} alt="icon" height="6px" />
           </div>
 
           <div
-            style={{ display: this.props.dropdown.show ? "block" : "none" }}
-            className={"select-box--items"}
+            style={{ display: this.props.dropdown.show ? 'block' : 'none' }}
+            className={'select-box--items'}
           >
             {this.props.currencies.currencies.map((item) => (
               <div key={item.id} onClick={() => this.selectItem(item.symbol)}>
@@ -51,7 +53,7 @@ class DropDown extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -59,8 +61,8 @@ const state = function (state) {
   return {
     currencies: state.currencies,
     dropdown: state.dropdown,
-  };
-};
+  }
+}
 
 const dispatch = (dispatch) => {
   return {
@@ -69,7 +71,7 @@ const dispatch = (dispatch) => {
     showDropdown: () => dispatch(showDropdown()),
     closeDropdown: () => dispatch(closeDropdown()),
     hideModal: () => dispatch(closeModal()),
-  };
-};
+  }
+}
 
-export default connect(state, dispatch)(DropDown);
+export default connect(state, dispatch)(DropDown)

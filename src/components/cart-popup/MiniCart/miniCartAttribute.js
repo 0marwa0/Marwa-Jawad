@@ -1,7 +1,5 @@
-import React from "react";
+import React from 'react'
 class index extends React.Component {
-  state = {};
-
   render() {
     return (
       <div className="attributes-holder">
@@ -10,19 +8,19 @@ class index extends React.Component {
             <span>{item.name}</span>
             <div
               className={
-                item.type === "swatch" ? "product-color" : "product-text"
+                item.type === 'swatch' ? 'product-color' : 'product-text'
               }
               style={{
-                background: item.type === "swatch" ? item.selected : "white",
+                background: item.type === 'swatch' ? item.selected : 'white',
               }}
             >
-              {item.type === "text" ? item.selected : ""}
+              {item.type === 'text' ? item.selected : ''}
             </div>
           </span>
         ))}
       </div>
-    );
+    )
   }
 }
 
-export default index;
+export default index

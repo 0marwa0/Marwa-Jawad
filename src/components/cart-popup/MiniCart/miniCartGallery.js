@@ -1,39 +1,41 @@
-import React from "react";
-import LeftIcon from "../../../assets/Icons/left.svg";
-import RightIcon from "../../../assets/Icons/right.svg";
-import LazyLoading from "../../LazyLoading";
-import "./cart.css";
+import React from 'react'
+import LeftIcon from '../../../assets/Icons/left.svg'
+import RightIcon from '../../../assets/Icons/right.svg'
+import LazyLoading from '../../LazyLoading'
+import './cart.css'
 class index extends React.Component {
   state = {
     currentImage: 0,
     nextAllowed: true,
     prevAllowed: false,
-  };
+  }
 
   nextImage = () => {
     this.setState(() => ({
       currentImage: this.state.currentImage + 1,
       loading: true,
-    }));
-  };
+    }))
+  }
+
   perviousImage = () => {
     this.setState(() => ({
       currentImage: this.state.currentImage - 1,
-    }));
-  };
+    }))
+  }
 
   render() {
-    let images = this.props.images;
-    let currentIndex = this.state.currentImage;
-    let gallery = images?.length - 1;
-    let prevAllowed = currentIndex !== 0 && gallery > 0 ? true : false;
-    let nextAllowed = currentIndex < gallery ? true : false;
+    const images = this.props.images
+    const currentIndex = this.state.currentImage
+    const gallery = images?.length - 1
+    const prevAllowed = currentIndex !== 0 && gallery > 0
+    const nextAllowed = currentIndex < gallery
+
     return (
       <div className="mini-cart-gallery">
         <button
-          disabled={prevAllowed ? false : true}
+          disabled={prevAllowed}
           style={{
-            cursor: prevAllowed ? "pointer" : "not-allowed",
+            cursor: prevAllowed ? 'pointer' : 'not-allowed',
           }}
           className="mini-cart-gallery-btn"
           onClick={this.perviousImage}
@@ -46,9 +48,9 @@ class index extends React.Component {
         />
 
         <button
-          disabled={nextAllowed ? false : true}
+          disabled={nextAllowed}
           style={{
-            cursor: nextAllowed ? "pointer" : "not-allowed",
+            cursor: nextAllowed ? 'pointer' : 'not-allowed',
           }}
           className="mini-cart-gallery-btn"
           onClick={this.nextImage}
@@ -56,8 +58,8 @@ class index extends React.Component {
           <img src={RightIcon} alt="icon" />
         </button>
       </div>
-    );
+    )
   }
 }
 
-export default index;
+export default index

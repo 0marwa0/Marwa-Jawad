@@ -1,14 +1,14 @@
-import React from "react";
-import { connect } from "react-redux";
-import { increase, decrease, removeProduct } from "../../../store/cartSlice";
-import { ReactComponent as PlusIcon } from "../../../assets/Icons/plusIcon.svg";
-import { ReactComponent as MinusIcon } from "../../../assets/Icons/minusIcon.svg";
-import TrashIcon from "../../../assets/Icons/trash-icon.png";
-import LazyLoading from "../../LazyLoading";
-import "./cart.css";
+import React from 'react'
+import { connect } from 'react-redux'
+import { increase, decrease, removeProduct } from '../../../store/cartSlice'
+import { ReactComponent as PlusIcon } from '../../../assets/Icons/plusIcon.svg'
+import { ReactComponent as MinusIcon } from '../../../assets/Icons/minusIcon.svg'
+import TrashIcon from '../../../assets/Icons/trash-icon.png'
+import LazyLoading from '../../LazyLoading'
+import './cart.css'
 class CartItemControl extends React.Component {
   render() {
-    let { id, count, gallery } = this.props.item;
+    const { id, count, gallery } = this.props.item
 
     return (
       <div className="flex">
@@ -36,7 +36,7 @@ class CartItemControl extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -45,6 +45,6 @@ const dispatch = (dispatch) => {
     onIncrease: (id) => dispatch(increase(id)),
     decrease: (id) => dispatch(decrease(id)),
     removeProduct: (id) => dispatch(removeProduct(id)),
-  };
-};
-export default connect(null, dispatch)(CartItemControl);
+  }
+}
+export default connect(null, dispatch)(CartItemControl)
