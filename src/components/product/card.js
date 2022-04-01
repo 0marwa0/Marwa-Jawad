@@ -4,7 +4,8 @@ import cartIcon from '../../assets/Icons/cartIcon.svg'
 import Hoc from '../Hoc'
 import { getPrice } from '../../UtilityFunctions'
 import LazyLoading from '../LazyLoading'
-
+import { addProduct } from '../../store/cartSlice'
+import { connect } from 'react-redux'
 class index extends React.Component {
   render() {
     const { brand, name, gallery, prices, id, inStock } = this.props.product
@@ -30,6 +31,10 @@ class index extends React.Component {
           className={
             inStock ? 'icon-cart-holder' : 'icon-cart-holder hidePointer'
           }
+          onClick={(e) => {
+            e.stopPropagation()
+            this.props.addProduct(this.props.product)
+          }}
         >
           <div className="icon-cart">
             <img src={cartIcon} alt="0" height="22px" />
@@ -43,4 +48,9 @@ class index extends React.Component {
     )
   }
 }
-export default Hoc(index)
+const dispatch = (dispatch) => {
+  return {
+    addProduct: (item) => dispatch(addProduct(item)),
+  }
+}
+export default connect(null, dispatch)(Hoc(index))
