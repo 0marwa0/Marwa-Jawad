@@ -1,0 +1,6 @@
+{
+  "singleQuote": true,
+  "semi": false,
+  "trailingComma": "none",
+  "comma-dangle": [2, "always-multiline"]
+}
