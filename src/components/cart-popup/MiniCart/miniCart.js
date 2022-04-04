@@ -68,7 +68,7 @@ class MiniCart extends React.Component {
           )}
         </div>
         <div className="mini-cart-total">
-          <span>total :</span>
+          <span>Total :</span>
           {totalCost}
         </div>
         {totalPages > 1 ? (
