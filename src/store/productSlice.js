@@ -1,45 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
-const query = `
-{
-  category{
-    name
-  
-    products{
-      id
-      name  
-      brand
-      gallery
-      description
-      inStock
-      attributes{
-        type
-        name
-        items{
-          value
-        }
-      }
-      prices{
-        currency{
-          symbol
-          label
-        }
-        amount
-      }
-    }
-  }
-}
+import { productQuery } from './queries'
 
-`
 export const fetchProduct = createAsyncThunk(
-  'productStore/fetchProdcut',
+  'productStore/fetchProduct',
   async (id) => {
     return await axios
-      .post('http://localhost:4000/', { query: query })
-      .then(
-        (res) =>
-          res.data.data.category.products.filter((item) => item.id === id)[0]
-      )
+      .post('http://localhost:4000/', {
+        query: productQuery(id),
+      })
+      .then((res) => res.data.data.product)
   }
 )
 const productSlice = createSlice({

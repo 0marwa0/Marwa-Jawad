@@ -4,7 +4,6 @@ import { setCategory, fetchCategory } from '../../store/categoriesSlice'
 import Hoc from '../Hoc'
 import './index.css'
 import '../../App.css'
-import { getCart } from '../../store/cartSlice'
 import { closeModal } from '../../store/modalSlice'
 class Navbar extends React.Component {
   state = {
@@ -13,7 +12,6 @@ class Navbar extends React.Component {
 
   componentDidMount() {
     this.props.getCategories()
-    this.props.getCart()
     this.setState(() => ({ currentCategory: this.props.currentCategory.name }))
   }
 
@@ -46,9 +44,7 @@ class Navbar extends React.Component {
 const data = function (state) {
   return {
     categories: state.categories?.categories,
-
     currentCategory: state.categories.currentCategory,
-    cart: state.cart,
   }
 }
 
@@ -56,7 +52,6 @@ const dispatch = (dispatch) => {
   return {
     changeCategory: (data) => dispatch(setCategory(data)),
     getCategories: () => dispatch(fetchCategory()),
-    getCart: () => dispatch(getCart()),
     closeModal: () => dispatch(closeModal()),
   }
 }
