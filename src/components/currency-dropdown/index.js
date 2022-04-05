@@ -38,7 +38,7 @@ class DropDown extends React.Component {
             }}
           >
             {this.state.selectedCurrency}{' '}
-            <img src={dropIcon} alt="icon" height="6px" />
+            <img src={dropIcon} alt="icon" className="select-icon" />
           </div>
 
           <div

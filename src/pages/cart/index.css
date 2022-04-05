@@ -3,7 +3,10 @@
   justify-content: center;
   flex-direction: column;
 }
-
+.item-cart-control .btn-icon {
+  height: max-content;
+  width: 100%;
+}
 .flex-col {
   display: flex;
   flex-direction: column;

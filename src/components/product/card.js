@@ -37,7 +37,7 @@ class index extends React.Component {
           }}
         >
           <div className="icon-cart">
-            <img src={cartIcon} alt="0" height="22px" />
+            <img src={cartIcon} alt="icon" />
           </div>
         </div>
         <p className="text">

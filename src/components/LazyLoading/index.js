@@ -19,13 +19,10 @@ class index extends React.Component {
       : this.props.src
     const label = this.props.label
     return (
-      <div style={{ position: 'relative' }}>
+      <div className="lazy-loading-holder">
         <img
           src={src}
           alt=""
-          width="100%"
-          height="100%"
-          style={{ zIndex: 999999 }}
           onLoadedDataCapture={() => this.setState({ loading: true })}
           onLoad={() => this.setState({ loading: false })}
         />

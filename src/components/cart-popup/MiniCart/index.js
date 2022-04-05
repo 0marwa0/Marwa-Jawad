@@ -4,7 +4,6 @@ import CartIcon from '../../../assets/Icons/cart.svg'
 import { connect } from 'react-redux'
 import MiniCart from './miniCart'
 import { showModal, closeModal } from '../../../store/modalSlice'
-// import PropTypes from 'prop-types'
 class index extends React.Component {
   render() {
     const cart = this.props.cart

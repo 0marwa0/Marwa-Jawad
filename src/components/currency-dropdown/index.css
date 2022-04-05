@@ -6,7 +6,9 @@
 .select-box--box {
   width: 50px;
 }
-
+.select-box--box .select-icon {
+  height: 6px;
+}
 .select-box--selected-item {
   display: inline-block;
   height: 100%;

@@ -92,7 +92,6 @@ const state = (state) => {
   return {
     selectedCurrency: state.currencies?.selectedCurrency,
     cart: state.cart.cart?.items,
-    test: state.cart,
   }
 }
 const dispatch = (dispatch) => {
