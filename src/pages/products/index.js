@@ -1,21 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchCategory } from '../../store/categoriesSlice'
-import { fetchCurrency } from '../../store/currencySlice'
+import { fetchProducts } from '../../store/productsSlice'
+
 import ProductCard from '../../components/product/card'
 import Pagination from '../../components/pagination'
 import './index.css'
 class Products extends React.Component {
-  state = { currentPage: 1, perPage: 6, products: this.props.products }
+  state = {
+    currentPage: 1,
+    perPage: 6,
+    products: this.props.products,
+    currentCategory: this.props.currentCategory,
+  }
+
   componentDidMount() {
-    this.props.getCategories()
-    this.props.getCurrency()
+    this.props.getProducts(this.props.currentCategory)
   }
 
   nextPage = () => {
     const totalPage = Math.ceil(this.props.products.length / this.state.perPage)
     if (totalPage !== this.state.currentPage) {
       this.setState(() => ({
+        test: this.state.test + 1,
         currentPage: this.state.currentPage + 1,
       }))
     }
@@ -28,22 +34,31 @@ class Products extends React.Component {
       }))
   }
 
+  componentDidUpdate(nextProps) {
+    if (nextProps.currentCategory !== this.props.currentCategory) {
+      this.props.getProducts(this.props.currentCategory)
+      return true
+    } else {
+      return false
+    }
+  }
+
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.products !== prevState.products) {
+    if (nextProps.currentCategory !== prevState.currentCategory) {
       return { currentPage: 1 }
     }
     return {}
   }
 
   render() {
-    let products = this.props.products || []
+    let products = this.props.products
     const lastIndex = this.state.currentPage * this.state.perPage
     const firstIndex = lastIndex - this.state.perPage
-    products = products?.slice(firstIndex, lastIndex)
+    products = products ? products.slice(firstIndex, lastIndex) : []
     const total = Math.ceil(this.props.products?.length / this.state.perPage)
     return (
       <div>
-        <h1 className="product-title">{this.props.categoryName} </h1>
+        <h1 className="product-title">{this.props.currentCategory} </h1>
         <Pagination
           totalPage={total}
           currentPage={this.state.currentPage}
@@ -51,8 +66,9 @@ class Products extends React.Component {
           onPrev={this.prevPage}
           key={this.props.products}
         />
+
         <div className="cards-holder">
-          {products?.map((item) => (
+          {products.map((item) => (
             <ProductCard
               key={item.id}
               product={item}
@@ -66,20 +82,15 @@ class Products extends React.Component {
 }
 const state = function (state) {
   return {
-    products:
-      state.categories.currentCategory.length !== 0
-        ? state.categories.currentCategory.products
-        : state.categories.categories[0]?.products,
-
+    products: state.products.products,
     currencies: state.currencies,
-    categoryName: state.categories.currentCategory.name,
+    currentCategory: state.categories.currentCategory,
   }
 }
 
 const dispatch = (dispatch) => {
   return {
-    getCategories: () => dispatch(fetchCategory()),
-    getCurrency: () => dispatch(fetchCurrency()),
+    getProducts: (category) => dispatch(fetchProducts(category)),
   }
 }
 

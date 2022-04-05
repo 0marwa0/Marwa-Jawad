@@ -1,6 +1,7 @@
 .card-holder {
   width: 94%;
-  max-width: 400px;
+  min-width: 350px;
+  max-width: 350px;
   height: 414px;
   display: flex;
   flex-direction: column;

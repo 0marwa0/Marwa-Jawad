@@ -1,37 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { setPreferences, getPreferences } from './Api'
-const query = `
-{
-  categories{
-    name
-    products{
-      id
-      name
-      brand
-      gallery
-      inStock
-      prices{
-        currency{
-          symbol
-          label
-        }
-        amount
-      }
-    }
-  }
-}
+import { categoriesQuery } from './queries'
 
-`
 export const fetchCategory = createAsyncThunk(
   'productStore/fetchCategory',
   async () => {
     return await axios
-      .post('http://localhost:4000/', { query: query })
+      .post('http://localhost:4000/', { query: categoriesQuery })
       .then((res) => res.data.data)
   }
 )
-const CategorisSlice = createSlice({
+const CategoriesSlice = createSlice({
   name: 'Category',
   initialState: {
     categories: [],
@@ -51,15 +31,13 @@ const CategorisSlice = createSlice({
   },
   extraReducers: {
     [fetchCategory.fulfilled](state, action) {
-      if (getPreferences('category') === null) {
-        state.currentCategory = action.payload.categories[0]
-        setPreferences('category', {
-          currentCategory: action.payload.categories[0],
-        })
-      }
+      state.currentCategory =
+        getPreferences('category') !== null
+          ? getPreferences('category').currentCategory
+          : action.payload.categories?.[0].name
       state.categories = action.payload.categories
     },
   },
 })
-export const { setCategory } = CategorisSlice.actions
-export default CategorisSlice.reducer
+export const { setCategory } = CategoriesSlice.actions
+export default CategoriesSlice.reducer

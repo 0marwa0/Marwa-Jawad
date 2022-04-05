@@ -109,7 +109,7 @@ class ProductInfo extends React.Component {
 }
 const state = (state) => {
   return {
-    products: state.products.product,
+    products: state.product.product,
     cart: state.cart.cart?.items,
     selectedCurrency: state.currencies.selectedCurrency,
   }

@@ -9,6 +9,7 @@
   padding: 30px 0;
   font-family: Raleway;
   font-weight: 300;
+  text-transform: capitalize;
 }
 .product-page {
   display: flex;

@@ -7,12 +7,12 @@ import '../../App.css'
 import { closeModal } from '../../store/modalSlice'
 class Navbar extends React.Component {
   state = {
-    currentCategory: this.props.currentCategory.name,
+    currentCategory: this.props.currentCategory,
   }
 
   componentDidMount() {
     this.props.getCategories()
-    this.setState(() => ({ currentCategory: this.props.currentCategory.name }))
+    // this.setState(() => ({ currentCategory: this.props.currentCategory }))
   }
 
   updateCategory = (category) => {
@@ -25,15 +25,16 @@ class Navbar extends React.Component {
 
   render() {
     const categories = this.props.categories
+
     return categories?.map((category) => (
       <span
         key={category.name}
         onClick={() => {
           this.props.history('/')
-          this.updateCategory(category)
+          this.updateCategory(category.name)
         }}
         className={
-          this.props.currentCategory.name === category.name ? 'activeTab' : ''
+          this.props.currentCategory === category.name ? 'activeTab' : ''
         }
       >
         {category.name}

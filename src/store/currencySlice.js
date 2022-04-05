@@ -1,20 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { getPreferences, setPreferences } from './Api'
-
-const query = `
-{
-  currencies{
-    label
-    symbol
-  }
-}
-`
+import { currencyQuery } from './queries'
 export const fetchCurrency = createAsyncThunk(
   'productStore/fetchCurrencies',
   async () => {
     return await axios
-      .post('http://localhost:4000/', { query: query })
+      .post('http://localhost:4000/', { query: currencyQuery })
       .then((res) => res.data.data.currencies)
   }
 )

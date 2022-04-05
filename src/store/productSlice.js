@@ -22,8 +22,10 @@ const productSlice = createSlice({
     [fetchProduct.fulfilled](state, action) {
       const attributes = action.payload.attributes.map((product) => ({
         ...product,
+
         selected: product.items[0].value,
       }))
+
       const product = { ...action.payload, attributes }
 
       state.product = product
