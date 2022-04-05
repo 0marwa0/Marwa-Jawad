@@ -48,7 +48,7 @@ class MiniCart extends React.Component {
           onClick={(e) => {
             e.stopPropagation()
             this.props.showMiniCart()
-            this.props.hideDropDown()
+            // this.props.hideDropDown()
           }}
         >
           <span>
@@ -56,11 +56,7 @@ class MiniCart extends React.Component {
             <span> item</span>
           </span>
           {products?.length !== 0 ? (
-            products ? (
-              products.map((item) => <CartItem data={item} key={item.id} />)
-            ) : (
-              ''
-            )
+            products.map((item) => <CartItem data={item} key={item.id} />)
           ) : (
             <div className="center">
               <img src={EmptyCart} alt="empty cart" />
