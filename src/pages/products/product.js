@@ -76,7 +76,7 @@ class ProductInfo extends React.Component {
     const { brand, name, gallery, prices, description, inStock } = product
 
     const price = getPrice(prices, this.props.selectedCurrency)
-    const label = inStock ? undefined : 'out-of-stock'
+    const label = inStock ? undefined : 'Out of stock'
 
     return (
       <div className="product-page">
@@ -84,7 +84,7 @@ class ProductInfo extends React.Component {
         <div className="product">
           <h1>{brand}</h1>
           <h1>{name}</h1>
-          <p>{label}</p>
+          <p className="text">{label}</p>
           <Attributes
             selectedAttributes={this.state.attributes}
             updateAttributes={this.updateAttributes}
