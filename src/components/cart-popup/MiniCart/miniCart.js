@@ -33,13 +33,13 @@ class MiniCart extends React.Component {
   }
 
   render() {
-    const items = this.props.cart ? this.props.cart : []
+    const items = this.props.cart
     const currency = this.props.selectedCurrency
     const lastIndex = this.state.currentPage * this.state.perPage
     const firstIndex = lastIndex - this.state.perPage
     const products = items.slice(firstIndex, lastIndex)
     const totalPages = Math.ceil(this.props.cart?.length / this.state.perPage)
-    const totalCost = currency + ' ' + totalPrice(items, currency)
+    //  const totalCost = currency + ' ' + totalPrice(items, currency)
 
     return (
       <>
@@ -65,7 +65,7 @@ class MiniCart extends React.Component {
         </div>
         <div className="mini-cart-total">
           <span>Total :</span>
-          {totalCost}
+          {currency + ' ' + totalPrice(items, currency)}
         </div>
         {totalPages > 1 ? (
           <div className="center">

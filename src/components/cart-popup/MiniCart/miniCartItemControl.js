@@ -8,19 +8,22 @@ import LazyLoading from '../../LazyLoading'
 import './cart.css'
 class CartItemControl extends React.Component {
   render() {
-    const { id, count, gallery } = this.props.item
+    const { cartId, count, gallery } = this.props.item
 
     return (
       <div className="flex">
         <div className="mini-cart-control">
           <div
             className="item-btn-sm"
-            onClick={() => this.props.onIncrease(id)}
+            onClick={() => this.props.onIncrease(cartId)}
           >
             <PlusIcon className="control-btn" />
           </div>
           <div>{count}</div>
-          <div className="item-btn-sm" onClick={() => this.props.decrease(id)}>
+          <div
+            className="item-btn-sm"
+            onClick={() => this.props.decrease(cartId)}
+          >
             <MinusIcon className="control-btn" />
           </div>
         </div>
@@ -31,7 +34,7 @@ class CartItemControl extends React.Component {
             <img
               src={TrashIcon}
               alt=""
-              onClick={() => this.props.removeProduct(id)}
+              onClick={() => this.props.removeProduct(cartId)}
             />
           </div>
         </div>

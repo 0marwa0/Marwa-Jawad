@@ -33,12 +33,12 @@ class index extends React.Component {
     return (
       <div className="mini-cart-gallery">
         <button
-          disabled={prevAllowed}
+          // disabled={prevAllowed}
           style={{
             cursor: prevAllowed ? 'pointer' : 'not-allowed',
           }}
           className="mini-cart-gallery-btn"
-          onClick={this.perviousImage}
+          onClick={() => this.perviousImage()}
         >
           <img src={LeftIcon} alt="icon" />
         </button>
@@ -48,12 +48,12 @@ class index extends React.Component {
         />
 
         <button
-          disabled={nextAllowed}
+          // disabled={nextAllowed}
           style={{
             cursor: nextAllowed ? 'pointer' : 'not-allowed',
           }}
           className="mini-cart-gallery-btn"
-          onClick={this.nextImage}
+          onClick={() => this.nextImage()}
         >
           <img src={RightIcon} alt="icon" />
         </button>
