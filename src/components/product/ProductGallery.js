@@ -1,7 +1,7 @@
 import React from 'react'
 import LazyLoading from '../LazyLoading'
 class index extends React.Component {
-  state = { mainImage: this.props.gallery }
+  state = { mainImage: '' }
   onDisplay = (src) => {
     this.setState(() => ({ mainImage: src }))
   }
@@ -20,7 +20,7 @@ class index extends React.Component {
 
         <div className="main-image">
           <LazyLoading
-            src={this.state.mainImage ?? gallery?.[0]}
+            src={this.state.mainImage ? this.state.mainImage : gallery?.[0]}
             item={this.props.item}
           />
         </div>
