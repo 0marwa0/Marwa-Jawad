@@ -97,7 +97,7 @@ class ProductInfo extends React.Component {
           </div>
 
           <button
-            className="AddToCart"
+            className={inStock ? 'AddToCart' : 'AddToCart hidePointer'}
             onClick={() => this.addItem(this.props.product)}
           >
             ADD TO CART
