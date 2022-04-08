@@ -3,9 +3,13 @@ import AttributeItem from './AttributeItem'
 import { connect } from 'react-redux'
 class Attributes extends React.Component {
   render() {
+    const attributes =
+      this.props.selectedAttributes.length !== 0
+        ? this.props.selectedAttributes
+        : this.props.product.attributes
     return (
       <div>
-        {this.props.product.attributes?.map((attribute) => (
+        {attributes?.map((attribute) => (
           <div className="Attribute-holder" key={attribute.name}>
             <p>{attribute?.name + ' :'}</p>
             <div className="flex">

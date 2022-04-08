@@ -2,14 +2,21 @@ import React from 'react'
 import withRouter from '../../components/Hoc/index'
 import { fetchProduct } from '../../store/productSlice'
 import { fetchCurrency } from '../../store/currencySlice'
-import { addProduct, getCart, removeProduct } from '../../store/cartSlice'
+import {
+  addProduct,
+  getCart,
+  removeProduct,
+  updateCart,
+} from '../../store/cartSlice'
 import { connect } from 'react-redux'
 import Attributes from '../../components/product/Attributes'
 import ProductGallery from '../../components/product/ProductGallery'
-import { getPrice } from '../../UtilityFunctions'
+import { getPrice, hasNewAttributes } from '../../UtilityFunctions'
+import { v1 as uuidv1 } from 'uuid'
 class ProductInfo extends React.Component {
   state = {
     attributes: [],
+    cart: [],
   }
 
   componentDidMount() {
@@ -22,7 +29,7 @@ class ProductInfo extends React.Component {
     const savedAttributes = this.state.attributes.length
     const attributes =
       savedAttributes === 0
-        ? this.props.products.attributes
+        ? this.props.product.attributes
         : this.state.attributes
 
     // update the chosen attribute
@@ -47,30 +54,30 @@ class ProductInfo extends React.Component {
       attributes = item.attributes
     }
     const product = {
+      cartId: uuidv1(),
       ...item,
       count: 1,
       attributes,
     }
 
     if (inStock) {
-      this.props.addProduct(product)
+      const store = this.props.cart
+      const ValidProduct = hasNewAttributes(store, product)
+      if (ValidProduct) {
+        this.props.addProduct(product)
+      }
+
       this.setState({ attributes: [] })
     }
   }
 
   render() {
-    const products = this.props.products
-    const { id, brand, name, gallery, prices, description, inStock } = products
-    const inCart = this.props.cart?.some((item) => item.id === id)
-    // check if the item is already added to the cart
-    // so we can show the item from the cart
-    const product = inCart
-      ? this.props.cart.filter((item) => item.id === id)[0]
-      : this.state.attributes.length !== 0
-      ? { ...this.props.products, attributes: this.state.attributes }
-      : this.props.products
+    const product = this.props.product
+    const { brand, name, gallery, prices, description, inStock } = product
+
     const price = getPrice(prices, this.props.selectedCurrency)
     const label = inStock ? undefined : 'out-of-stock'
+
     return (
       <div className="product-page">
         <ProductGallery gallery={gallery} />
@@ -79,6 +86,7 @@ class ProductInfo extends React.Component {
           <h1>{name}</h1>
           <p>{label}</p>
           <Attributes
+            selectedAttributes={this.state.attributes}
             updateAttributes={this.updateAttributes}
             product={product}
           />
@@ -90,13 +98,9 @@ class ProductInfo extends React.Component {
 
           <button
             className="AddToCart"
-            onClick={() =>
-              inCart
-                ? this.props.removeProduct(id)
-                : this.addItem(this.props.products)
-            }
+            onClick={() => this.addItem(this.props.product)}
           >
-            {inCart ? 'REMOVE FROM CART' : 'ADD TO CART'}
+            ADD TO CART
           </button>
           <div
             className="product-description"
@@ -109,7 +113,7 @@ class ProductInfo extends React.Component {
 }
 const state = (state) => {
   return {
-    products: state.product.product,
+    product: state.product.product,
     cart: state.cart.cart?.items,
     selectedCurrency: state.currencies.selectedCurrency,
   }
@@ -119,6 +123,7 @@ const dispatch = (dispatch) => {
     getProduct: (id) => dispatch(fetchProduct(id)),
     getCurrency: () => dispatch(fetchCurrency()),
     addProduct: (item) => dispatch(addProduct(item)),
+    updateCart: (cart) => dispatch(updateCart(cart)),
     getCart: () => dispatch(getCart()),
     removeProduct: (id) => dispatch(removeProduct(id)),
   }
