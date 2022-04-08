@@ -2,16 +2,35 @@ import React from 'react'
 import './index.css'
 import cartIcon from '../../assets/Icons/cartIcon.svg'
 import Hoc from '../Hoc'
-import { getPrice } from '../../UtilityFunctions'
+import { getPrice, hasNewAttributes } from '../../UtilityFunctions'
 import LazyLoading from '../LazyLoading'
 import { addProduct } from '../../store/cartSlice'
 import { connect } from 'react-redux'
+import { v1 as uuidv1 } from 'uuid'
 class index extends React.Component {
+  addToCart = (item) => {
+    const product = {
+      cartId: uuidv1(),
+      ...item,
+      count: 1,
+    }
+
+    if (item.inStock) {
+      const store = this.props.cart
+      const ValidProduct = hasNewAttributes(store, product)
+      if (ValidProduct) {
+        this.props.addProduct(product)
+      }
+    }
+  }
+
   render() {
     const { brand, name, gallery, prices, id, inStock } = this.props.product
     const currency = this.props.selectedCurrency
     const label = inStock ? undefined : 'OUT OF STOCK'
     const price = currency + ' ' + getPrice(prices, currency)
+    const product = { ...this.props.product, count: 1 }
+
     return (
       <div
         className="card-holder"
@@ -33,7 +52,7 @@ class index extends React.Component {
           }
           onClick={(e) => {
             e.stopPropagation()
-            this.props.addProduct(this.props.product)
+            this.addToCart(product)
           }}
         >
           <div className="icon-cart">
@@ -48,9 +67,14 @@ class index extends React.Component {
     )
   }
 }
+const state = (state) => {
+  return {
+    cart: state.cart.cart?.items,
+  }
+}
 const dispatch = (dispatch) => {
   return {
     addProduct: (item) => dispatch(addProduct(item)),
   }
 }
-export default connect(null, dispatch)(Hoc(index))
+export default connect(state, dispatch)(Hoc(index))
