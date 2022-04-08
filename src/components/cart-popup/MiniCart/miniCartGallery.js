@@ -3,6 +3,7 @@ import LeftIcon from '../../../assets/Icons/left.svg'
 import RightIcon from '../../../assets/Icons/right.svg'
 import LazyLoading from '../../LazyLoading'
 import './cart.css'
+import GalleryButton from './GalleryButton'
 class index extends React.Component {
   state = {
     currentImage: 0,
@@ -32,31 +33,23 @@ class index extends React.Component {
 
     return (
       <div className="mini-cart-gallery">
-        <button
-          // disabled={prevAllowed}
-          style={{
-            cursor: prevAllowed ? 'pointer' : 'not-allowed',
-          }}
-          className="mini-cart-gallery-btn"
-          onClick={() => this.perviousImage()}
-        >
-          <img src={LeftIcon} alt="icon" />
-        </button>
+        <GalleryButton
+          images={images}
+          icon={LeftIcon}
+          handleClick={() => this.perviousImage()}
+          disable={prevAllowed}
+        />
+
         <LazyLoading
           src={images?.[this.state.currentImage]}
           item={this.props.product}
         />
-
-        <button
-          // disabled={nextAllowed}
-          style={{
-            cursor: nextAllowed ? 'pointer' : 'not-allowed',
-          }}
-          className="mini-cart-gallery-btn"
-          onClick={() => this.nextImage()}
-        >
-          <img src={RightIcon} alt="icon" />
-        </button>
+        <GalleryButton
+          images={images}
+          icon={RightIcon}
+          handleClick={() => this.nextImage()}
+          disable={nextAllowed}
+        />
       </div>
     )
   }
