@@ -15,47 +15,39 @@ const cartSlice = createSlice({
       } else {
         state.cart?.items.push(action.payload)
       }
-
-      // postRequest(state, "cart");
+    },
+    updateCart(state, action) {
+      console.log('update cart', action.payload)
+      state.cart.items = action.payload
     },
     removeProduct(state, action) {
       const index = state.cart.items.findIndex(
-        (cart) => cart.id === action.payload
+        (cart) => cart.cartId === action.payload
       )
       state.cart.items.splice(index, 1)
-      // postRequest(state);
     },
     increase(state, action) {
       state.cart.items.map((item) => {
-        if (action.payload === item.id) {
+        if (action.payload === item.cartId) {
           item.count = item.count + 1
           return item
         } else {
           return item
         }
       })
-      // postRequest(state, "cart");
     },
     decrease(state, action) {
       state.cart.items.map((item) => {
-        if (action.payload === item.id && item.count > 1) {
+        if (action.payload === item.cartId && item.count > 1) {
           item.count = item.count - 1
           return item
         } else {
           return item
         }
       })
-      // postRequest(state, "cart");
     },
   },
-
-  // extraReducers: (builder) => {
-  //   builder.addCase(getCart.fulfilled, (state, action) => {
-  //     console.log(action.payload, "payload");
-  //     if (action.payload) return action.payload;
-  //   });
-  // },
 })
-export const { addProduct, removeProduct, decrease, increase } =
+export const { updateCart, addProduct, removeProduct, decrease, increase } =
   cartSlice.actions
 export default cartSlice.reducer
