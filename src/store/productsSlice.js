@@ -7,7 +7,7 @@ export const fetchProducts = createAsyncThunk(
   async (category) => {
     return await axios
       .post('http://localhost:4000/', { query: productsQuery(category) })
-      .then((res) => res.data.data)
+      .then((res) => res.data.data.category)
   }
 )
 const ProductsSlice = createSlice({
@@ -18,7 +18,7 @@ const ProductsSlice = createSlice({
 
   extraReducers: {
     [fetchProducts.fulfilled](state, action) {
-      const products = action.payload.category.products.map((item) => {
+      const products = action.payload.products.map((item) => {
         const updated = item.attributes.map((product) => ({
           ...product,
 
