@@ -26,7 +26,7 @@
   position: relative;
   width: 105px;
   height: 137px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .mini-cart-img img {
   width: 100%;
@@ -83,7 +83,7 @@
 .mini-cart-gallery {
   width: 200px;
   height: 200px;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   align-items: center;
   justify-content: center;

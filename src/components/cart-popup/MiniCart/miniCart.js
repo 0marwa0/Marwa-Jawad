@@ -9,7 +9,7 @@ import { totalPrice } from '../../../UtilityFunctions'
 import { closeDropdown } from '../../../store/dropdownSlice'
 import PropTypes from 'prop-types'
 class MiniCart extends React.Component {
-  state = { currentPage: 1, perPage: 2 }
+  state = { currentPage: 1, perPage: 2, cart: this.props.cart }
   static prototypes = {
     showMiniCart: PropTypes.func.isRequired,
     cart: PropTypes.array.isRequired,
@@ -33,7 +33,7 @@ class MiniCart extends React.Component {
   }
 
   render() {
-    const items = this.props.cart
+    const items = this.state.cart
     const currency = this.props.selectedCurrency
     const lastIndex = this.state.currentPage * this.state.perPage
     const firstIndex = lastIndex - this.state.perPage
@@ -54,8 +54,9 @@ class MiniCart extends React.Component {
           <span>
             <span className="bold-text">My bag {items ? items.length : 0}</span>
             <span> item</span>
+            {items.length}
           </span>
-          {products?.length !== 0 ? (
+          {items.length !== 0 ? (
             products.map((item) => <CartItem data={item} key={item.id} />)
           ) : (
             <div className="center">

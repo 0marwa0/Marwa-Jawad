@@ -41,6 +41,7 @@ class index extends React.Component {
         />
 
         <LazyLoading
+          style="image-wrapper-s"
           src={images?.[this.state.currentImage]}
           item={this.props.product}
         />

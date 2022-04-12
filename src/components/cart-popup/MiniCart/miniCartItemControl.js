@@ -29,7 +29,11 @@ class CartItemControl extends React.Component {
         </div>
 
         <div className="mini-cart-img">
-          <LazyLoading src={gallery?.[0]} item={this.props.data} />
+          <LazyLoading
+            src={gallery?.[0]}
+            style="image-wrapper-s"
+            item={this.props.data}
+          />
           <div className="trash-btn">
             <img
               src={TrashIcon}
