@@ -20,12 +20,15 @@ class index extends React.Component {
     const label = this.props.label
     return (
       <div className="lazy-loading-holder">
-        <img
-          src={src}
-          alt=""
-          onLoadedDataCapture={() => this.setState({ loading: true })}
-          onLoad={() => this.setState({ loading: false })}
-        />
+        <div className={this.props.style}>
+          <img
+            src={src}
+            alt=""
+            onLoadedDataCapture={() => this.setState({ loading: true })}
+            onLoad={() => this.setState({ loading: false })}
+          />
+        </div>
+
         {label ? <div className="inStock">{label}</div> : null}
       </div>
     )
