@@ -70,6 +70,7 @@ class Products extends React.Component {
         <div className="cards-holder">
           {products.map((item) => (
             <ProductCard
+              style="image-wrapper-m"
               key={item.id}
               product={item}
               selectedCurrency={this.props.currencies.selectedCurrency}

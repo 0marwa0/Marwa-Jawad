@@ -15,23 +15,7 @@
   display: flex;
   gap: 100px;
 }
-.product-gallery {
-  flex: 65%;
-  gap: 40px;
-  display: flex;
-  height: 100%;
-}
 
-.product-images div {
-  width: 96px;
-  height: 87px;
-
-  margin-bottom: 10px;
-}
-.main-image {
-  height: 540px;
-  /* width: 100%; */
-}
 .product {
   flex: 35%;
   display: flex;
