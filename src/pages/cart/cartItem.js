@@ -6,7 +6,7 @@ import TrashIcon from '../../assets/Icons/trash-icon.png'
 
 class index extends React.Component {
   render() {
-    const { name, brand, attributes, prices, id } = this.props.item
+    const { name, brand, attributes, prices, cartId } = this.props.item
     const currency = this.props.currency
     const price = currency + ' ' + getPrice(prices, currency)
     return (
@@ -18,7 +18,7 @@ class index extends React.Component {
             <img
               src={TrashIcon}
               alt="icon"
-              onClick={() => this.props.removeItem(id)}
+              onClick={() => this.props.removeItem(cartId)}
               className="trash_icon"
             />
           </div>

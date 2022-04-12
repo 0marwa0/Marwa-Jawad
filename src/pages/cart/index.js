@@ -19,12 +19,12 @@ class Cart extends React.Component {
         <h1 className="bold-text">Cart</h1>
         <div className="cart-page">
           {this.props.cart?.map((item) => (
-            <div className="cart-page-item" key={item.id}>
+            <div className="cart-page-item" key={item.cartId}>
               <CartItem item={item} currency={currency} />
               <ItemControl
                 item={item}
-                increase={() => this.props.increase(item.id)}
-                decrease={() => this.props.decrease(item.id)}
+                increase={() => this.props.increase(item.cartId)}
+                decrease={() => this.props.decrease(item.cartId)}
               />
             </div>
           ))}
