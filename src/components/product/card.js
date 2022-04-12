@@ -39,8 +39,9 @@ class index extends React.Component {
           this.props.history(`/product/${id}`)
         }}
       >
-        <div className="card-image">
+        <div className="image-wrapper">
           <LazyLoading
+            style={this.props.style}
             src={gallery[0]}
             item={this.props.product}
             label={label}
