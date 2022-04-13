@@ -15,6 +15,16 @@ class MiniCart extends React.Component {
     cart: PropTypes.array.isRequired,
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (
+      nextProps.cart.count === prevState.cart.count ||
+      nextProps.cart.length !== prevState.cart.length
+    )
+      return {
+        cart: nextProps.cart,
+      }
+  }
+
   nextPage = () => {
     const totalPage = Math.round(this.props.cart.length / this.state.perPage)
     if (totalPage !== this.state.currentPage) {
