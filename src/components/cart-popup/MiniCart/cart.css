@@ -25,7 +25,7 @@
 .mini-cart-img {
   position: relative;
   width: 105px;
-  height: 137px;
+  /* height: 137px; */
   /* overflow: hidden; */
 }
 .mini-cart-img img {
@@ -34,8 +34,8 @@
 }
 .trash-btn {
   position: absolute;
-  bottom: 0;
   right: 0;
+  top: 0;
   width: 20px;
 }
 .item-info-cart {
@@ -83,7 +83,6 @@
 .mini-cart-gallery {
   width: 200px;
   height: 200px;
-  /* overflow: hidden; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,7 +100,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  height: 100px;
+  height: 145px;
 }
 .mini-cart-control .control-btn {
   width: 100%;

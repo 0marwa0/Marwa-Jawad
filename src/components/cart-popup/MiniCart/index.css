@@ -19,6 +19,9 @@
   position: relative;
   z-index: 9;
 }
+.cart-modal .cartIcon {
+  height: 25px;
+}
 .modal-content {
   position: absolute;
   top: 50px;
