@@ -7,10 +7,9 @@ import TrashIcon from '../../../assets/Icons/trash-icon.png'
 import LazyLoading from '../../LazyLoading'
 import './cart.css'
 class CartItemControl extends React.Component {
-  componentDidMount() {}
-
   render() {
     const { cartId, count, gallery } = this.props.item
+
     return (
       <div className="flex">
         <div className="mini-cart-control">
