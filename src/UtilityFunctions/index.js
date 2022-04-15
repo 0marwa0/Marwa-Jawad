@@ -12,7 +12,7 @@ export const totalPrice = (items, currency) => {
   let total = 0
   items?.map((item) => {
     const amount = getPrice(item.prices, currency)
-    total = amount * item.count
+    total = total + amount * item.count
     return item
   })
 
