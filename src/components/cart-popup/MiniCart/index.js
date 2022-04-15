@@ -17,7 +17,7 @@ class index extends React.Component {
             e.stopPropagation()
           }}
         >
-          <img src={CartIcon} alt="cart" height="25px" />
+          <img src={CartIcon} alt="cart" className="cartIcon" />
           <div className="cart-num">{length}</div>
         </div>
         <div
