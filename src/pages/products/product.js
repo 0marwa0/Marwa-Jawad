@@ -13,6 +13,7 @@ import Attributes from '../../components/product/Attributes'
 import ProductGallery from '../../components/product/ProductGallery'
 import { getPrice, hasNewAttributes } from '../../UtilityFunctions'
 import { v1 as uuidv1 } from 'uuid'
+import { Interweave } from 'interweave'
 class ProductInfo extends React.Component {
   state = {
     attributes: [],
@@ -102,10 +103,9 @@ class ProductInfo extends React.Component {
           >
             ADD TO CART
           </button>
-          <div
-            className="product-description"
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
+          <div className="product-description">
+            <Interweave content={description} />
+          </div>
         </div>
       </div>
     )
