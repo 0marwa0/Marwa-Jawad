@@ -49,7 +49,7 @@ class MiniCart extends React.Component {
     const firstIndex = lastIndex - this.state.perPage
     const products = items.slice(firstIndex, lastIndex)
     const totalPages = Math.ceil(this.props.cart?.length / this.state.perPage)
-    //  const totalCost = currency + ' ' + totalPrice(items, currency)
+    const totalCost = currency + ' ' + totalPrice(items, currency)
 
     return (
       <>
@@ -67,7 +67,7 @@ class MiniCart extends React.Component {
             {items.length}
           </span>
           {items.length !== 0 ? (
-            products.map((item) => <CartItem data={item} key={item.id} />)
+            products.map((item) => <CartItem data={item} key={item.cartId} />)
           ) : (
             <div className="center">
               <img src={EmptyCart} alt="empty cart" />
@@ -76,7 +76,7 @@ class MiniCart extends React.Component {
         </div>
         <div className="mini-cart-total">
           <span>Total :</span>
-          {currency + ' ' + totalPrice(items, currency)}
+          {totalCost}
         </div>
         {totalPages > 1 ? (
           <div className="center">
