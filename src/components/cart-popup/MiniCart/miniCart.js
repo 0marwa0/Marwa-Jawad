@@ -58,7 +58,6 @@ class MiniCart extends React.Component {
           onClick={(e) => {
             e.stopPropagation()
             this.props.showMiniCart()
-            // this.props.hideDropDown()
           }}
         >
           <span>

@@ -3,7 +3,7 @@ import { getPrice } from '../../UtilityFunctions'
 import { removeProduct } from '../../store/cartSlice'
 import { connect } from 'react-redux'
 import TrashIcon from '../../assets/Icons/trash-icon.png'
-
+import CartAttributes from './cartAttributes'
 class index extends React.Component {
   render() {
     const { name, brand, attributes, prices, cartId } = this.props.item
@@ -23,28 +23,7 @@ class index extends React.Component {
             />
           </div>
           <div className="bold-text">{price}</div>
-          {attributes.map((item) => (
-            <div className="attr-holder" key={item.name}>
-              <span> {item.name}</span>
-              <div className="flex">
-                {item.items.map((value) => (
-                  <div
-                    key={value.value}
-                    className={
-                      value.value === item.selected
-                        ? 'box-selected selected-item'
-                        : 'box-container'
-                    }
-                    style={{
-                      background: item.type === 'swatch' ? value.value : '',
-                    }}
-                  >
-                    {item.type === 'text' ? value.value : ''}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+          <CartAttributes attributes={attributes} />
         </div>
       </>
     )

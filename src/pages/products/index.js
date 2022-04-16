@@ -58,7 +58,7 @@ class Products extends React.Component {
     const total = Math.ceil(this.props.products?.length / this.state.perPage)
     return (
       <div>
-        <h1 className="product-title">{this.props.currentCategory} </h1>
+        <h1 className="category-title">{this.props.currentCategory} </h1>
         <Pagination
           totalPage={total}
           currentPage={this.state.currentPage}

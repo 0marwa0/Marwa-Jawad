@@ -1,13 +1,8 @@
 import React from 'react'
 import withRouter from '../../components/Hoc/index'
 import { fetchProduct } from '../../store/productSlice'
-import { fetchCurrency } from '../../store/currencySlice'
-import {
-  addProduct,
-  getCart,
-  removeProduct,
-  updateCart,
-} from '../../store/cartSlice'
+// import { fetchCurrency } from '../../store/currencySlice'
+import { addProduct } from '../../store/cartSlice'
 import { connect } from 'react-redux'
 import Attributes from '../../components/product/Attributes'
 import ProductGallery from '../../components/product/ProductGallery'
@@ -22,8 +17,6 @@ class ProductInfo extends React.Component {
 
   componentDidMount() {
     this.props.getProduct(this.props.id)
-    this.props.getCurrency()
-    this.props.getCart()
   }
 
   updateAttributes = (items) => {
@@ -121,11 +114,7 @@ const state = (state) => {
 const dispatch = (dispatch) => {
   return {
     getProduct: (id) => dispatch(fetchProduct(id)),
-    getCurrency: () => dispatch(fetchCurrency()),
     addProduct: (item) => dispatch(addProduct(item)),
-    updateCart: (cart) => dispatch(updateCart(cart)),
-    getCart: () => dispatch(getCart()),
-    removeProduct: (id) => dispatch(removeProduct(id)),
   }
 }
 export default connect(state, dispatch)(withRouter(ProductInfo))

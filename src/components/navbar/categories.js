@@ -12,7 +12,6 @@ class Navbar extends React.Component {
 
   componentDidMount() {
     this.props.getCategories()
-    // this.setState(() => ({ currentCategory: this.props.currentCategory }))
   }
 
   updateCategory = (category) => {

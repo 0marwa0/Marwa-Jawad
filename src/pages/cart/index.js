@@ -1,12 +1,7 @@
 import React from 'react'
 import './index.css'
 import { connect } from 'react-redux'
-import {
-  addProduct,
-  decrease,
-  increase,
-  removeProduct,
-} from '../../store/cartSlice'
+import { decrease, increase, removeProduct } from '../../store/cartSlice'
 import CartItem from './cartItem'
 import ItemControl from './itemControl'
 
@@ -42,7 +37,6 @@ const data = (state) => {
 
 const dispatch = (dispatch) => {
   return {
-    addItem: (item) => dispatch(addProduct(item)),
     deleteItem: (id) => dispatch(removeProduct(id)),
     increase: (id) => dispatch(increase(id)),
     decrease: (id) => dispatch(decrease(id)),
