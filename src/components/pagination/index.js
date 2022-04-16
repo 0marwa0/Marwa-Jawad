@@ -2,6 +2,7 @@ import React from 'react'
 import LeftIcon from '../../assets/Icons/left.svg'
 import RightIcon from '../../assets/Icons/right.svg'
 import './index.css'
+import PaginationBtn from './paginationBtn'
 class index extends React.Component {
   render() {
     const current = this.props.currentPage
@@ -10,29 +11,21 @@ class index extends React.Component {
     const rightAllowed = current !== total
     return (
       <div className="flex">
-        <button
-          className={leftAllowed ? 'pagination-btn-active' : 'pagination-btn'}
-          onClick={(e) => {
-            e.stopPropagation()
-            this.props.onPrev()
-          }}
-        >
-          <img src={LeftIcon} alt="icon" />
-        </button>
+        <PaginationBtn
+          clickHandle={this.props.onPrev}
+          disable={leftAllowed}
+          icon={LeftIcon}
+        />
         <div>
           {current}
           {' / '}
           {total}
         </div>
-        <button
-          className={rightAllowed ? 'pagination-btn-active' : 'pagination-btn'}
-          onClick={(e) => {
-            this.props.onNext()
-            e.stopPropagation()
-          }}
-        >
-          <img src={RightIcon} alt="icon" />
-        </button>
+        <PaginationBtn
+          clickHandle={this.props.onNext}
+          disable={rightAllowed}
+          icon={RightIcon}
+        />
       </div>
     )
   }
