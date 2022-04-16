@@ -1,6 +1,6 @@
 .card-holder {
-  width: 350px;
-  max-width: 450px;
+  width: 100%;
+  /* max-width: 450px; */
   height: max-content;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,11 @@
   display: flex;
   height: 100%;
 }
-
+.image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .product-images div {
   width: 120px;
   height: auto;

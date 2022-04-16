@@ -16,8 +16,8 @@
 }
 .image-wrapper-m {
   width: max-content;
-  max-width: 446px;
-  height: 405px;
+  /* max-width: 3006px; */
+  height: 305px;
   z-index: 9999999;
 }
 .image-wrapper img {
@@ -27,7 +27,7 @@
 }
 
 .image-wrapper-m img {
-  width: 340px;
+  width: 100%;
   height: 100%;
   object-fit: contain;
 }

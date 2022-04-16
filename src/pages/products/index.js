@@ -64,7 +64,7 @@ class Products extends React.Component {
           currentPage={this.state.currentPage}
           onNext={this.nextPage}
           onPrev={this.prevPage}
-          key={this.props.products}
+          // key={this.props.products}
         />
 
         <div className="cards-holder">

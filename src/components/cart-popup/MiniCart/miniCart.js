@@ -1,7 +1,6 @@
 import React from 'react'
 import './cart.css'
 import { connect } from 'react-redux'
-import Pagination from '../../..//components/pagination'
 import EmptyCart from '../../../assets/Icons/empty_cart.gif'
 import CartItem from './miniCartItem'
 import CartControl from './miniCartControl'
@@ -25,30 +24,9 @@ class MiniCart extends React.Component {
       }
   }
 
-  nextPage = () => {
-    const totalPage = Math.round(this.props.cart.length / this.state.perPage)
-    if (totalPage !== this.state.currentPage) {
-      console.log(totalPage, this.state.currentPage)
-      this.setState(() => ({
-        currentPage: this.state.currentPage + 1,
-      }))
-    }
-  }
-
-  prevPage = () => {
-    if (this.state.currentPage > 1)
-      this.setState(() => ({
-        currentPage: this.state.currentPage - 1,
-      }))
-  }
-
   render() {
     const items = this.state.cart
     const currency = this.props.selectedCurrency
-    const lastIndex = this.state.currentPage * this.state.perPage
-    const firstIndex = lastIndex - this.state.perPage
-    const products = items.slice(firstIndex, lastIndex)
-    const totalPages = Math.ceil(this.props.cart?.length / this.state.perPage)
     const totalCost = currency + ' ' + totalPrice(items, currency)
 
     return (
@@ -66,7 +44,9 @@ class MiniCart extends React.Component {
             {items.length}
           </span>
           {items.length !== 0 ? (
-            products.map((item) => <CartItem data={item} key={item.cartId} />)
+            this.props.cart.map((item) => (
+              <CartItem data={item} key={item.cartId} />
+            ))
           ) : (
             <div className="center">
               <img src={EmptyCart} alt="empty cart" />
@@ -77,18 +57,7 @@ class MiniCart extends React.Component {
           <span>Total :</span>
           {totalCost}
         </div>
-        {totalPages > 1 ? (
-          <div className="center">
-            <Pagination
-              totalPage={totalPages}
-              currentPage={this.state.currentPage}
-              onPrev={this.prevPage}
-              onNext={this.nextPage}
-            />
-          </div>
-        ) : (
-          ''
-        )}
+
         <CartControl items={items} closeModal={this.props.closeModal} />
       </>
     )

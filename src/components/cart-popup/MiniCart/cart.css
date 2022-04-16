@@ -2,6 +2,8 @@
   padding: 20px;
   width: 345px;
   min-height: 400px;
+  height: 450px;
+  overflow-y: scroll;
 }
 .mini-cart-title {
   font-weight: bold;
@@ -106,4 +108,25 @@
 .mini-cart-control .control-btn {
   width: 100%;
   height: max-content;
+}
+
+/* scrollbar styles */
+.mini-cart {
+  scrollbar-width: thin;
+
+  scrollbar-color: #5ece7b white;
+}
+
+.mini-cart::-webkit-scrollbar {
+  width: 12px;
+}
+
+.mini-cart::-webkit-scrollbar-track {
+  background: white;
+}
+
+.mini-cart::-webkit-scrollbar-thumb {
+  background-color: #5ece7b;
+  border-radius: 50px;
+  border: 3px solid white;
 }

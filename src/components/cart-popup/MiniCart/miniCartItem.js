@@ -6,7 +6,7 @@ import CartItemControl from './miniCartItemControl'
 import './cart.css'
 class CartControl extends React.Component {
   render() {
-    const { brand, name, attributes, prices } = this.props.data
+    const { brand, name, attributes, prices, id } = this.props.data
     const currency = this.props.currentCurrency
     const price = currency + ' ' + getPrice(prices, currency)
 
@@ -18,7 +18,7 @@ class CartControl extends React.Component {
           <div className="text bold-text">{price}</div>
           <CartAttribute items={attributes} />
         </div>
-        <CartItemControl item={this.props.data} />
+        <CartItemControl item={this.props.data} id={id} />
       </div>
     )
   }

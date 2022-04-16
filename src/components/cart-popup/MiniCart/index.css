@@ -17,6 +17,7 @@
 }
 .cart-modal {
   position: relative;
+
   z-index: 9;
 }
 .cart-modal .cartIcon {
@@ -26,8 +27,8 @@
   position: absolute;
   top: 50px;
   right: 1px;
-
   width: max-content;
   background-color: white;
   z-index: 99;
+  height: 580px;
 }
