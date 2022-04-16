@@ -9,6 +9,12 @@
 .select-box--box .select-icon {
   height: 6px;
 }
+.show-select {
+  display: block;
+}
+.hide-select {
+  display: none;
+}
 .select-box--selected-item {
   display: inline-block;
   height: 100%;

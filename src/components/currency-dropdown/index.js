@@ -5,6 +5,7 @@ import dropIcon from '../../assets/Icons/dropIcon.svg'
 import './index.css'
 import { showDropdown, closeDropdown } from '../../store/dropdownSlice'
 import { closeModal } from '../../store/modalSlice'
+import DropDownItems from './dropDownItems'
 class DropDown extends React.Component {
   state = {
     selectedCurrency: this.props.currencies.selectedCurrency,
@@ -40,25 +41,12 @@ class DropDown extends React.Component {
             {this.state.selectedCurrency}{' '}
             <img src={dropIcon} alt="icon" className="select-icon" />
           </div>
-
-          <div
-            style={{ display: this.props.dropdown.show ? 'block' : 'none' }}
-            className={'select-box--items'}
-          >
-            {this.props.currencies.currencies.map((item) => (
-              <div
-                className={
-                  this.state.selectedCurrency === item.symbol
-                    ? 'selected-drop-item'
-                    : ''
-                }
-                key={item.symbol}
-                onClick={() => this.selectItem(item.symbol)}
-              >
-                {item.symbol} {item.label}
-              </div>
-            ))}
-          </div>
+          <DropDownItems
+            show={this.props.dropdown.show}
+            selectItem={this.selectItem}
+            selectedCurrency={this.state.selectedCurrency}
+            currencies={this.props.currencies.currencies}
+          />
         </div>
       </div>
     )
@@ -68,7 +56,6 @@ class DropDown extends React.Component {
 const state = function (state) {
   return {
     currencies: state.currencies,
-
     dropdown: state.dropdown,
   }
 }
