@@ -5,7 +5,7 @@
   margin-top: 25px;
   grid-template-columns: repeat(3, auto);
 }
-.product-title {
+.category-title {
   padding: 30px 0;
   font-family: Raleway;
   font-weight: 300;
