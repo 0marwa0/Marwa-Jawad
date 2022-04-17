@@ -3,14 +3,9 @@ import Navbar from './components/navbar'
 import { connect } from 'react-redux'
 import { closeDropdown } from './store/dropdownSlice'
 import { closeModal } from './store/modalSlice'
-import { fetchCategory } from './store/categoriesSlice'
 class index extends React.Component {
   componentDidMount() {
     document.addEventListener('scroll', this.onScroll, true)
-    this.props.getCategories()
-    if (!localStorage.getItem('cart')) {
-      localStorage.setItem('cart', JSON.stringify({ items: [] }))
-    }
   }
 
   close = () => {
@@ -41,18 +36,11 @@ class index extends React.Component {
     )
   }
 }
-const state = (state) => {
-  return {
-    showModal: state.modal.showModal,
-    currentCategory: state.categories,
-    currentCurrency: state.currencies.selectedCurrency,
-  }
-}
+
 const dispatch = (dispatch) => {
   return {
-    getCategories: () => dispatch(fetchCategory()),
     hideDropdown: () => dispatch(closeDropdown()),
     closeModal: () => dispatch(closeModal()),
   }
 }
-export default connect(state, dispatch)(index)
+export default connect(null, dispatch)(index)
