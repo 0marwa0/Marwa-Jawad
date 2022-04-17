@@ -61,7 +61,8 @@ class index extends React.Component {
           </div>
         </div>
         <p className="text">
-          {brand} {name}
+          <p>{brand}</p>
+          <p>{name}</p>
         </p>
         <div className="bold-text">{price}</div>
       </div>
