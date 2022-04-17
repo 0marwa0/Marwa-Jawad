@@ -32,6 +32,7 @@ class Navbar extends React.Component {
           this.props.history('/')
           this.updateCategory(category.name)
         }}
+        id="category"
         className={
           this.props.currentCategory === category.name ? 'activeTab' : ''
         }

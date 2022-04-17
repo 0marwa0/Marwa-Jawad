@@ -15,6 +15,7 @@ const CategoriesSlice = createSlice({
   name: 'Category',
   initialState: {
     categories: [],
+    currentPage: 1,
     currentCategory:
       getPreferences('category') !== null
         ? getPreferences('category').currentCategory
@@ -24,9 +25,16 @@ const CategoriesSlice = createSlice({
   reducers: {
     setCategory(state, action) {
       state.currentCategory = action.payload
+      state.currentPage = 1
       setPreferences('category', {
         currentCategory: action.payload,
       })
+    },
+    next(state) {
+      state.currentPage = state.currentPage + 1
+    },
+    prev(state) {
+      state.currentPage = state.currentPage - 1
     },
   },
   extraReducers: {
@@ -39,5 +47,5 @@ const CategoriesSlice = createSlice({
     },
   },
 })
-export const { setCategory } = CategoriesSlice.actions
+export const { setCategory, next, prev } = CategoriesSlice.actions
 export default CategoriesSlice.reducer
