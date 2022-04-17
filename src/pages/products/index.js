@@ -5,12 +5,11 @@ import { fetchProducts } from '../../store/productsSlice'
 import ProductCard from '../../components/product/card'
 import Pagination from '../../components/pagination'
 import './index.css'
+import { next, prev } from '../../store/categoriesSlice'
 class Products extends React.Component {
   state = {
-    currentPage: 1,
     perPage: 6,
     products: this.props.products,
-
     currentCategory: this.props.currentCategory,
   }
 
@@ -22,18 +21,15 @@ class Products extends React.Component {
     this.forceUpdate()
 
     const totalPage = Math.ceil(this.props.products.length / this.state.perPage)
-    if (totalPage !== this.state.currentPage) {
-      this.setState(() => ({
-        currentPage: this.state.currentPage + 1,
-      }))
+    if (totalPage !== this.props.currentPage) {
+      this.props.next()
     }
   }
 
   prevPage = () => {
-    if (this.state.currentPage > 1)
-      this.setState(() => ({
-        currentPage: this.state.currentPage - 1,
-      }))
+    if (this.props.currentPage > 1) {
+      this.props.prev()
+    }
   }
 
   componentDidUpdate(nextProps) {
@@ -47,19 +43,19 @@ class Products extends React.Component {
 
   render() {
     let products = this.props.products
-    const lastIndex = this.state.currentPage * this.state.perPage
+    const lastIndex = this.props.currentPage * this.state.perPage
     const firstIndex = lastIndex - this.state.perPage
     products = products ? products.slice(firstIndex, lastIndex) : []
     const total = Math.ceil(this.props.products?.length / this.state.perPage)
     const category = this.props.currentCategory
+
     return (
       <div>
         <h1 className="category-title">{category} </h1>
-        {this.state.currentPage}
-        {this.state.test}
+
         <Pagination
           totalPage={total}
-          currentPage={this.state.currentPage}
+          currentPage={this.props.currentPage}
           onNext={() => this.nextPage()}
           onPrev={this.prevPage}
         />
@@ -83,11 +79,14 @@ const state = function (state) {
     products: state.products.products,
     currencies: state.currencies,
     currentCategory: state.categories?.currentCategory,
+    currentPage: state.categories?.currentPage,
   }
 }
 
 const dispatch = (dispatch) => {
   return {
+    next: () => dispatch(next()),
+    prev: () => dispatch(prev()),
     getProducts: (category) => dispatch(fetchProducts(category)),
   }
 }
