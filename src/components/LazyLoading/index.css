@@ -15,9 +15,8 @@
   position: relative;
 }
 .image-wrapper-m {
-  width: max-content;
-  /* max-width: 3006px; */
-  height: 305px;
+  width: 380px;
+  height: 440px;
   z-index: 9999999;
 }
 .image-wrapper img {
