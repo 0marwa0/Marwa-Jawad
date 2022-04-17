@@ -18,6 +18,7 @@ class Products extends React.Component {
   }
 
   nextPage = () => {
+    this.forceUpdate()
     const totalPage = Math.ceil(this.props.products.length / this.state.perPage)
     if (totalPage !== this.state.currentPage) {
       this.setState(() => ({
