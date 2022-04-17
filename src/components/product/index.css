@@ -1,7 +1,7 @@
 .card-holder {
   width: 100%;
   /* max-width: 450px; */
-  height: 504px;
+  /* height: 504px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -18,14 +18,12 @@
   display: flex;
   height: 100%;
 }
-.card-holder .image-wrapper {
-  box-shadow: #5ece7b 0px 15px 15px -15px;
-}
+
 .image-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 300px;
   height: 100%;
 }
 

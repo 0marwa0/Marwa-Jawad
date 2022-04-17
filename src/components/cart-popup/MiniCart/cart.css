@@ -27,8 +27,6 @@
 .mini-cart-img {
   position: relative;
   width: 105px;
-  /* height: 137px; */
-  /* overflow: hidden; */
 }
 .mini-cart-img img {
   width: 100%;
@@ -43,8 +41,8 @@
 .item-info-cart {
   display: flex;
   width: 100%;
-  padding: 10px 0;
   justify-content: space-between;
+  margin: 10px 0;
 }
 .mini-cart-btns {
   display: flex;
@@ -66,10 +64,9 @@
 .attributes-holder {
   display: flex;
   flex-wrap: wrap;
-
   margin-top: 10px;
   width: 100%;
-  gap: 20px;
+  gap: 10px;
   padding: 10px 0;
   margin-right: 5px;
 }

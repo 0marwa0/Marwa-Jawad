@@ -1,9 +1,9 @@
 .cards-holder {
   display: grid;
   place-content: center;
-  gap: 4%;
-  margin-top: 25px;
-  grid-template-columns: repeat(3, 1fr);
+  gap: 10%;
+  margin-top: 10%;
+  grid-template-columns: repeat(3, 300px);
 }
 .category-title {
   padding: 30px 0;
