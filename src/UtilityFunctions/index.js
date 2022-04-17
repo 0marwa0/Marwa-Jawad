@@ -25,12 +25,14 @@ export const hasNewAttributes = (cart, product) => {
 
   for (let index = 0; index < cartItems.length; index++) {
     const attributes = cartItems[index].attributes
+    // get cart item attribute value
     const storeItem = attributes.map((item) => item.selected)
+    // get the new added attribute value
     const currentItem = product.attributes.map((item) => item.selected)
-    // check if we see this attributes before
+    // compare to check if we have saw this attributes before
     if (JSON.stringify(storeItem) === JSON.stringify(currentItem)) {
       isNew = false
-      // if it hasn't a new attribute value then increase the count
+      // if it didn't have any new attribute value then increase the count of it
       const id = cartItems[index].cartId
       const updatedCart = cart.map((item) => {
         const temp = Object.assign({}, item)
