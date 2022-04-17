@@ -60,10 +60,10 @@ class index extends React.Component {
             <img src={cartIcon} alt="icon" />
           </div>
         </div>
-        <p className="text">
+        <div className="text">
           <p>{brand}</p>
           <p>{name}</p>
-        </p>
+        </div>
         <div className="bold-text">{price}</div>
       </div>
     )
