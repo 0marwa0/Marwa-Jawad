@@ -15,7 +15,8 @@
   position: relative;
 }
 .image-wrapper-m {
-  width: 350px;
+  width: 100%;
+  /* max-width: 3006px; */
   height: 440px;
   z-index: 9999999;
 }
