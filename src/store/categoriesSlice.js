@@ -18,7 +18,7 @@ const CategoriesSlice = createSlice({
     currentCategory:
       getPreferences('category') !== null
         ? getPreferences('category').currentCategory
-        : {},
+        : '',
   },
 
   reducers: {

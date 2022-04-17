@@ -6,13 +6,9 @@ import CartItem from './miniCartItem'
 import CartControl from './miniCartControl'
 import { totalPrice } from '../../../UtilityFunctions'
 import { closeDropdown } from '../../../store/dropdownSlice'
-import PropTypes from 'prop-types'
+
 class MiniCart extends React.Component {
   state = { currentPage: 1, perPage: 2, cart: this.props.cart }
-  static prototypes = {
-    showMiniCart: PropTypes.func.isRequired,
-    cart: PropTypes.array.isRequired,
-  }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (
@@ -39,9 +35,10 @@ class MiniCart extends React.Component {
           }}
         >
           <span>
-            <span className="bold-text">My bag {items ? items.length : 0}</span>
-            <span> item</span>
-            {items.length}
+            <span className="bold-text">My bag, </span>
+            <span>
+              {items.length} {`item${items.length <= 1 ? '' : 's'}`}
+            </span>
           </span>
           {items.length !== 0 ? (
             this.props.cart.map((item) => (

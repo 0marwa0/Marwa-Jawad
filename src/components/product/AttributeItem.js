@@ -1,6 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import withRouter from '../../components/Hoc'
+
 class index extends React.Component {
   render() {
     const value = this.props.value
@@ -25,9 +25,5 @@ class index extends React.Component {
     )
   }
 }
-const state = (state) => {
-  return {
-    cart: state.cart.cart?.items,
-  }
-}
-export default connect(state)(withRouter(index))
+
+export default withRouter(index)

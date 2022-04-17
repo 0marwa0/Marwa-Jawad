@@ -17,7 +17,6 @@ const cartSlice = createSlice({
       }
     },
     updateCart(state, action) {
-      console.log('update cart', action.payload)
       state.cart.items = action.payload
     },
     removeProduct(state, action) {

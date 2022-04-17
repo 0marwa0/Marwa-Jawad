@@ -10,6 +10,7 @@ class Products extends React.Component {
     currentPage: 1,
     perPage: 6,
     products: this.props.products,
+
     currentCategory: this.props.currentCategory,
   }
 
@@ -19,10 +20,10 @@ class Products extends React.Component {
 
   nextPage = () => {
     this.forceUpdate()
+
     const totalPage = Math.ceil(this.props.products.length / this.state.perPage)
     if (totalPage !== this.state.currentPage) {
       this.setState(() => ({
-        test: this.state.test + 1,
         currentPage: this.state.currentPage + 1,
       }))
     }
@@ -44,28 +45,23 @@ class Products extends React.Component {
     }
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.currentCategory !== prevState.currentCategory) {
-      return { currentPage: 1 }
-    }
-    return {}
-  }
-
   render() {
     let products = this.props.products
     const lastIndex = this.state.currentPage * this.state.perPage
     const firstIndex = lastIndex - this.state.perPage
     products = products ? products.slice(firstIndex, lastIndex) : []
     const total = Math.ceil(this.props.products?.length / this.state.perPage)
+    const category = this.props.currentCategory
     return (
       <div>
-        <h1 className="category-title">{this.props.currentCategory} </h1>
+        <h1 className="category-title">{category} </h1>
+        {this.state.currentPage}
+        {this.state.test}
         <Pagination
           totalPage={total}
           currentPage={this.state.currentPage}
-          onNext={this.nextPage}
+          onNext={() => this.nextPage()}
           onPrev={this.prevPage}
-          // key={this.props.products}
         />
 
         <div className="cards-holder">
@@ -86,7 +82,7 @@ const state = function (state) {
   return {
     products: state.products.products,
     currencies: state.currencies,
-    currentCategory: state.categories.currentCategory,
+    currentCategory: state.categories?.currentCategory,
   }
 }
 

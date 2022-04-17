@@ -1,6 +1,6 @@
 import React from 'react'
 import AttributeItem from './AttributeItem'
-import { connect } from 'react-redux'
+
 class Attributes extends React.Component {
   render() {
     const attributes =
@@ -28,9 +28,5 @@ class Attributes extends React.Component {
     )
   }
 }
-const state = (state) => {
-  return {
-    cart: state.cart.items,
-  }
-}
-export default connect(state)(Attributes)
+
+export default Attributes
