@@ -8,11 +8,6 @@ class index extends React.Component {
     document.addEventListener('scroll', this.onScroll, true)
   }
 
-  close = () => {
-    this.props.closeModal()
-    this.props.hideDropdown()
-  }
-
   onScroll = () => {
     if (window.scrollY > 0) {
       this.close()
